@@ -47,11 +47,7 @@ export const CustomerSchema = new Schema(
                 required: true,
                 lowercase: true
             },
-            order: {
-                type: String,
-                required: false,
-            },
-        }
+        },
     },
     {
         collection: 'customers',

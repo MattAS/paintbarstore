@@ -5,6 +5,7 @@
   "main": "pages/index.js",
   "dependencies": {
     "@apollo/client": "^3.3.7",
+    "@apollo/gateway": "^0.22.0",
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/node": "^7.12.10",

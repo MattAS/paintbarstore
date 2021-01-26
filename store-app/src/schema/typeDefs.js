@@ -1,5 +1,6 @@
 import {gql} from 'apollo-server';
 
+
 export const typeDefs = gql `
     type Product {
         id: ID!,
@@ -8,6 +9,15 @@ export const typeDefs = gql `
         quantity: Int!,
         imgLink: String
     }
+    input ProductInput {
+        id: ID!,
+        name: String!,
+        price: Float!,
+        quantity: Int!,
+        imgLink: String
+
+    }
+
     type Address {
         addressLine1: String!,
         addressLine2: String, 
@@ -41,14 +51,29 @@ export const typeDefs = gql `
         customer: Customer
         address: Address
     }
+
+    type Order {
+        id: String!
+        product_id: ID!
+        status: Int!,
+        customer_id:ID!
+    }
+    input OrderInput {
+        id: String!
+        product_id: ID!
+        status: Int!,
+        customer_id:ID!
+    }
+
     type Query {
         products: [Product],
-        customers: [Customer],
-        GetCustomerAddress(id: ID!): [Address]
+        customers(id: ID): [Customer],
+        order(id: ID): [Order]
     }
 
     type Mutation {
         addProduct(name: String!, price: Float!, quantity: Int!, imgLink: String): Product
-        addCustomer(customerInput: CustomerInput!, addressInput: AddressInput!): Customer
+        addCustomer(customerInput: CustomerInput!, addressInput: AddressInput!): RegisterCustomer
+        addOrder(orderInput: OrderInput!): Order
     }
 `
