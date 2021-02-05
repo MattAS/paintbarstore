@@ -1,0 +1,33 @@
+{
+  "name": "store-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.mjs",
+  "scripts": {
+    "serverdev": "nodemon --exec babel-node ./index.mjs",
+    "server": "concurrently -k npm:server:*",
+    "server:customer": "nodemon ./graphql/customer.mjs",
+    "server:order": "nodemon ./graphql/order.mjs",
+    "server:product": "nodemon ./graphql/product.mjs",
+    "server:graphql": "wait-port 4001 && wait-port 4003 && wait-port 4003 && nodemon ./graphql/gateway.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/client": "^3.3.7",
+    "@apollo/federation": "^0.21.0",
+    "@apollo/gateway": "^0.22.0",
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "apollo-server": "^2.19.2",
+    "express": "^4.17.1",
+    "graphql": "^15.5.0",
+    "graphql-compose": "^7.24.2",
+    "mongoose": "^5.11.13",
+    "mongoose-timestamp": "^0.6.0",
+    "nodemon": "^2.0.7"
+  }
+}
